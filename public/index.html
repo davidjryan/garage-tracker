@@ -16,16 +16,21 @@
     <section id="input-container">
       <input type='text' placeholder='Lingerer' id='linger-input' class="header-input">
       <input type='text' placeholder='YOUR REASON' id='reason-input' class="header-input">
-      <select name="How Clean" id="clean-input">
+      <select name="How Clean" id="clean-input" class="multi">
         <option value="Sparkling">Sparkling</option>
         <option value="Dusty">Dusty</option>
         <option value="Rancid">Rancid</option>
       </select>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" id="submit-input" class="submit">
     </section>
   </header>
   <main>
-    <section class="counters"></section>
+    <section class="counters">
+      <p class="counter">Cards: <span id="card-count">0</span></p>
+      <p class="counter">Sparkling: <span id="sparkle-count">0</span></p>
+      <p class="counter">Dusty: <span id="dusty-count">0</span></p>
+      <p class="counter">Rancid: <span id="rancid-count">0</span></p>
+    </section>
     <section class="sort"></section>
     <section id="card-container">
     </section>
