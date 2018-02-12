@@ -19,4 +19,12 @@ describe('Client Routes', () => {
         throw error;
       });
   });
+
+  it('should return a 404 if the page is not found', () => {
+    return chai.request(server)
+      .get('/sad')
+      .then(response => {
+        response.should.have.status(404);
+      });
+  });
 })
