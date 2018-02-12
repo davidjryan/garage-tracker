@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Garage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1> Garage Tracker</h1>
+    <section id="input-container">
+      <input type='text' , placeholder='Lingerer' id='linger-input' class="header-input">
+      <input type='text' placeholder='YOUR REASON' id='reason-input' class="header-input">
+      <select name="How Clean" id="clean-input">
+        <option value="Sparkling"></option>
+        <option value="Dusty"></option>
+        <option value="Rancid"></option>
+      </select>
+      <input type="submit" value="Submit">
+    </section>
+  </header>
+  <main>
+    <section id="card-container">
+      <article>
+        <div class="title-container">
+          <h4 class="title">Dummy Card</h4>
+          <input class="delete" type="submit">
+        </div>
+        <h5 class="clean">Sparkles</h5>
+        <hr>
+        <p class="reason" ></p>
+      </article>
+    </section>
+  </main>
+</body>
+<script src="min.jquery.js"></script>
+<script src='scripts.js'></script>
+
+</html>
