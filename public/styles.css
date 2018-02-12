@@ -38,6 +38,15 @@ main {
   width: 100%;
 }
 
+.counters {
+  display: flex;
+}
+
+.counters p {
+  font-size: 16px;
+  margin: 5px;
+}
+
 .card-container {
   width: 50%;
 }
