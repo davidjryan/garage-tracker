@@ -29,6 +29,22 @@ app.get('/api/v1/garage', (request, response) => {
     });
 });
 
+app.post('/api/v1/garage', (request, response) => {
+  const item = request.body;
+
+  for (const requiredParams of ['lingers', 'reason', 'clean']) {
+    if (!item[requiredParams]) {
+      return response.status(422).json({
+        error: `You are missing ${requiredParams}`
+      });
+    }
+  }
+
+  database('garage').insert(item, 'id')
+    .then(item => response.status(201).json({ id: item[0] }))
+    .catch(error => response.status(500).json({ error }));
+})
+
 app.listen(app.get('port'), () => {
   /* eslint-disable no-console */
   console.log(`${app.locals.title} is running on ${app.get('port')}. env: ${environment}`);
