@@ -46,16 +46,20 @@ const submitItem = async () => {
   console.log(response)
 
   prependItems([{ lingers, clean, reason, id: response.id }])
+  cardCount(1)
 
   $('.header-input').val('');
 };
 
-const cardCount = (items) => {
-
+const cardCount = (count) => {
+  console.log($('#card-count').text())
+  let cardCount = parseInt($('#card-count').text())
+  let totalCount = cardCount += count
+  $('#card-count').text(totalCount)
 }
 
 const cleanCount = (items) => {
-
+  
 }
 
 const selectItem = (event) => {
