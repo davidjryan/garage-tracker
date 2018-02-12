@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
 app.get('/api/v1/garage', (request, response) => {
   database('garage').select()
     .then((items) => {
-      response.status(200).json({count: items.length});
+      response.status(200).json({ items, count: items.length });
     })
     .catch((error) => {
       response.status(500).json({ error });
