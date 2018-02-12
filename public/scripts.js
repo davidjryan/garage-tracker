@@ -47,6 +47,7 @@ const submitItem = async () => {
 
   prependItems([{ lingers, clean, reason, id: response.id }])
   cardCount(1)
+  cleanCount([{ clean }])
 
   $('.header-input').val('');
 };
@@ -55,11 +56,31 @@ const cardCount = (count) => {
   console.log($('#card-count').text())
   let cardCount = parseInt($('#card-count').text())
   let totalCount = cardCount += count
+
   $('#card-count').text(totalCount)
 }
 
 const cleanCount = (items) => {
-  
+  const cleanObject = items.reduce((accu, ele) => {
+    if (ele.clean in accu) {
+      accu[ele.clean]++;
+    } else {
+      accu[ele.clean] = 1;
+    }
+    return accu
+  }, {})
+
+  let sparkleCount = parseInt($('#sparkle-count').text())
+  let dustyCount = parseInt($('#dusty-count').text())
+  let rancidCount = parseInt($('#rancid-count').text())
+
+  let totalSparkle = sparkleCount += cleanObject.Sparkling || 0
+  let totalDusty = dustyCount += cleanObject.Dusty || 0
+  let totalRancid = rancidCount += cleanObject.Rancid || 0
+
+  $('#sparkle-count').text(totalSparkle)
+  $('#dusty-count').text(totalDusty)
+  $('#rancid-count').text(totalRancid)
 }
 
 const selectItem = (event) => {
