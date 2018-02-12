@@ -2,7 +2,7 @@ $(document).ready(function() {
   fetchItems();
 })
 
-const appendItems = (items) => {
+const prependItems = (items) => {
   items.forEach((item, index) => {
     $('#card-container').prepend(`
     <article id="card${item.id}">
@@ -22,12 +22,44 @@ const fetchItems = async () => {
   const itemsFetch = await fetch('http://localhost:3000/api/v1/garage/')
   const itemsData = await itemsFetch.json()
 
-  appendItems(itemsData.items)
+  prependItems(itemsData.items)
   cardCount(itemsData.count)
-  
-  return ;
+  cleanCount(itemsData.items)
+
+  return;
 }
 
-const submitItem = () => {
+const submitItem = async () => {
+  const lingers = $('#linger-input').val();
+  const clean = $('#clean-input').val();
+  const reason = $('#reason-input').val();
+
+  const savePost = await fetch('http://localhost:3000/api/v1/garage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ lingers, clean, reason })
+  });
+
+  const response = await savePost.json();
+  console.log(response)
+
+  prependItems([{ lingers, clean, reason, id: response.id }])
+
+  $('.header-input').val('');
+};
+
+const cardCount = (items) => {
 
 }
+
+const cleanCount = (items) => {
+
+}
+
+const selectItem = (event) => {
+
+}
+
+$('#submit-input').on('click', submitItem)
