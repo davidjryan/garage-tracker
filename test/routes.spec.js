@@ -28,3 +28,36 @@ describe('Client Routes', () => {
       });
   });
 })
+
+describe('API Routes', () => {
+
+  beforeEach((done) => {
+    knex.seed.run()
+      .then(() => {
+        done();
+      });
+  });
+
+  describe('GET api/v1/garage', () => {
+    it('should return all the garage items', () => {
+      return chai.request(server)
+        .get('/api/v1/garage')
+        .then(response => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(3);
+          response.res.should.be.a('object');
+          response.body[0].should.have.property('lingers');
+          response.body[0].address.should.equal('Boxes');
+          response.body[0].should.have.property('reason');
+          response.body[0].balance.should.equal('no time');
+          response.body[0].should.have.property('clean');
+          response.body[0].balance.should.equal('Sparkling');
+        })
+        .catch(err => {
+          throw err;
+        });
+    });
+  })
+})
