@@ -60,4 +60,25 @@ describe('API Routes', () => {
         });
     });
   })
+
+  describe('POST api/v1/garage', () => {
+
+    it('should post a garage item', () => {
+      return chai.request(server)
+        .post('/api/v1/garage')
+        .send({
+          lingers: 'shoes',
+          reason: 'they smell',
+          clean: 'Rancid'
+        })
+        .then(response => {
+          response.should.have.status(201);
+          response.body.should.be.a('object');
+          response.body.should.have.property('id')
+        })
+        .catch(error => {
+          throw error;
+        })
+    })
+  })
 })
