@@ -5,13 +5,15 @@ $(document).ready(function() {
 const prependItems = (items) => {
   items.forEach((item, index) => {
     $('#card-container').prepend(`
-    <article id="card${item.id}">
+    <article id="card${item.id}" class="card">
         <div class="title-container">
           <h4 class="title">${item.lingers}</h4>
           <h5 class="clean">${item.clean}</h5>
         </div>
-        <hr>
-        <p class="reason" >${item.reason}</p>
+        <div class="body">
+          <hr>
+          <p class="reason" >${item.reason}</p>
+        </div>
       </article>`)
   })
 
@@ -83,8 +85,22 @@ const cleanCount = (items) => {
   $('#rancid-count').text(totalRancid)
 }
 
-const selectItem = (event) => {
-
+function selectItem(event) {
+  console.log($(event.target))
+  const card = $(event.target).toggleClass('active')
+ 
 }
 
+const cardAccend = () => {
+  
+}
+
+const cardDescend = () => {
+
+}
+ 
+
+$('#accend').on('click', cardAccend)
+$('#decend').on('click', cardDescend)
+$('.card').on('click', (event) => selectItem(event))
 $('#submit-input').on('click', submitItem)
