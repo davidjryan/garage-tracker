@@ -85,8 +85,8 @@ const cleanCount = (items) => {
   $('#rancid-count').text(totalRancid)
 }
 
-function selectItem(event) {
-  console.log($(event.target))
+function selectItem() {
+  console.log($(this))
   const card = $(event.target).toggleClass('active')
  
 }
@@ -102,5 +102,5 @@ const cardDescend = () => {
 
 $('#accend').on('click', cardAccend)
 $('#decend').on('click', cardDescend)
-$('.card').on('click', (event) => selectItem(event))
+// $('.card').on('click', selectItem())
 $('#submit-input').on('click', submitItem)
