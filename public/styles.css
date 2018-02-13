@@ -47,8 +47,8 @@ main {
   margin: 5px;
 }
 
-.card-container {
-  width: 50%;
+#card-container {
+  width: 345px;
 }
 
 article {
@@ -58,8 +58,12 @@ article {
   width: 345px;
 }
 
-article hr, .reason {
+.card .body {
   display: none;
+}
+
+.card .active .body {
+  display: flex;
 }
 
 .title-container {
