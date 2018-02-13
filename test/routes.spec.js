@@ -80,5 +80,19 @@ describe('API Routes', () => {
           throw error;
         })
     })
+
+    it('should return a 422 when a required param is missing', () => {
+      return chai.request(server)
+        .post('/api/v1/garage')
+        .send({
+          lingers: 'car parts'
+        })
+        .then(response => {
+          response.should.have.status(422);
+        })
+        .catch(error => {
+          throw error;
+        })
+    })
   })
 })
