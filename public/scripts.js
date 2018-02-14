@@ -17,7 +17,7 @@ const prependItems = (items) => {
       </article>`)
   })
 
-  $('#card-container').on('click', (event) => selectItem(event));
+  $('#card-container').on('click', selectItem(event));
 }
 
 const fetchItems = async () => {
