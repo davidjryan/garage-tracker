@@ -21,7 +21,7 @@ const prependItems = (items) => {
 }
 
 const fetchItems = async () => {
-  const itemsFetch = await fetch('http://localhost:3000/api/v1/garage/')
+  const itemsFetch = await fetch('https://localhost:3000/api/v1/garage/')
   const itemsData = await itemsFetch.json()
 
   prependItems(itemsData.items)
@@ -36,7 +36,7 @@ const submitItem = async () => {
   const clean = $('#clean-input').val();
   const reason = $('#reason-input').val();
 
-  const savePost = await fetch('http://localhost:3000/api/v1/garage', {
+  const savePost = await fetch('https://localhost:3000/api/v1/garage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
