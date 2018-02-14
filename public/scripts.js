@@ -27,8 +27,6 @@ const fetchItems = async () => {
   prependItems(itemsData.items)
   cardCount(itemsData.count)
   cleanCount(itemsData.items)
-
-  return;
 }
 
 const submitItem = async () => {
